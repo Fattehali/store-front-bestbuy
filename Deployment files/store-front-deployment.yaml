@@ -55,3 +55,15 @@ spec:
             initialDelaySeconds: 3
             periodSeconds: 3
 ---
+# Service for Store Front
+apiVersion: v1
+kind: Service
+metadata:
+  name: store-front
+spec:
+  ports:
+    - port: 80 # Service port exposed outside the cluster
+      targetPort: 8080 # Target container port
+  selector:
+    app: store-front
+  type: LoadBalancer # Expose service externally via load balancer
